@@ -344,8 +344,9 @@ export default function Dashboard({ user }: DashboardProps) {
       // Get the actual user ID from the session
       const userId = session.user.id;
 
-      // Use the same API_URL as defined in api.ts
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
+      // Use the same API_URL as defined in config/api.js
+      const { API_BASE_URL } = require('../config/api');
+      const API_URL = API_BASE_URL;
       
       // Function to make the API call
       const makeChatRequest = async (token: string) => {

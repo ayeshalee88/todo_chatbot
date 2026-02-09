@@ -1,4 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+const { API_BASE_URL } = require('../config/api');
+const API_URL = API_BASE_URL;
 
 type ApiResult<T> = {
   data?: T;

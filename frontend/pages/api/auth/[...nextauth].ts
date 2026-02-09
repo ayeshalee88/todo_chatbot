@@ -18,7 +18,8 @@ export const authOptions: AuthOptions = {
       async profile(profile) {
         // After Google authenticates the user, call our backend to get/create user and tokens
         try {
-          const BACKEND_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+          const { API_BASE_URL } = require('../../../config/api');
+          const BACKEND_API_URL = API_BASE_URL;
           const response = await fetch(`${BACKEND_API_URL}/api/google-signin`, {
             method: "POST",
             headers: {
@@ -78,7 +79,8 @@ export const authOptions: AuthOptions = {
 
         try {
           // Authenticate against the backend API
-          const BACKEND_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+          const { API_BASE_URL } = require('../../../config/api');
+          const BACKEND_API_URL = API_BASE_URL;
           console.log(`Attempting to authenticate user: ${credentials.email} at ${BACKEND_API_URL}/api/login`);
           const response = await fetch(`${BACKEND_API_URL}/api/login`, {
             method: "POST",
@@ -127,7 +129,8 @@ export const authOptions: AuthOptions = {
       // Handle the token exchange after successful sign-in with Google
       if (account?.provider === 'google' && profile) {
         try {
-          const BACKEND_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+          const { API_BASE_URL } = require('../../../config/api');
+          const BACKEND_API_URL = API_BASE_URL;
           const response = await fetch(`${BACKEND_API_URL}/api/google-signin`, {
             method: "POST",
             headers: {
@@ -213,7 +216,8 @@ export const authOptions: AuthOptions = {
 async function refreshAccessToken(token: any) {
   try {
     // Use the same API URL that was used for login
-    const BACKEND_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+    const { API_BASE_URL } = require('../../../config/api');
+    const BACKEND_API_URL = API_BASE_URL;
     
     // Add timeout handling and better error reporting
     const controller = new AbortController();
