@@ -345,7 +345,7 @@ export default function Dashboard({ user }: DashboardProps) {
       const userId = session.user.id;
 
       // Use the same API_URL as defined in api.ts
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
       
       // Function to make the API call
       const makeChatRequest = async (token: string) => {

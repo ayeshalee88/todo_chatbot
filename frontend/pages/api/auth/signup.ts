@@ -20,7 +20,7 @@ export default async function handler(
     }
 
     // Forward the signup request to the backend API
-    const BACKEND_API_URL = process.env.BACKEND_API_URL || "http://localhost:8001";
+    const BACKEND_API_URL = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
     const response = await fetch(`${BACKEND_API_URL}/api/signup`, {
       method: "POST",
       headers: {
